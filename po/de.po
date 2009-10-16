@@ -1,0 +1,172 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-04-30 16:39+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../src/main-window.c:62
+msgid "Select name for ISO file"
+msgstr ""
+
+#: ../src/main-window.c:66 ../src/main-window.c:103
+msgid "_Generate"
+msgstr "_Erstellen"
+
+#: ../src/main-window.c:99
+msgid "Select directory for DVD structure"
+msgstr ""
+
+#: ../src/main-window.c:122
+#, c-format
+msgid "Successfully created a DVD structure in %s"
+msgstr "DVD-Struktur wurde erfolgreich in %s erzeugt"
+
+#: ../src/main-window.c:201
+msgid "Select files to be added to the DVD"
+msgstr "Datein zum Hinzufügen zur DVD auswählen"
+
+#: ../src/main-window.c:236
+msgid "Select filename for dvdauthor XML file"
+msgstr "Dateiname für dvdauthor XML-Datei"
+
+#: ../src/main-window.c:275
+msgid "_File"
+msgstr "_Datei"
+
+#: ../src/main-window.c:276
+msgid "_Edit"
+msgstr "_Bearbeiten"
+
+#: ../src/main-window.c:278
+msgid "_Add file"
+msgstr "D_atei hinzufügen"
+
+#: ../src/main-window.c:280
+msgid "_Export List"
+msgstr "Liste _exportieren"
+
+#: ../src/main-window.c:281
+msgid "_Write dvdauthor XML file"
+msgstr "Als Dvdauthor XML-Datei"
+
+#: ../src/main-window.c:283
+msgid "_Create DVD structure"
+msgstr "Als DVD-Struktur"
+
+#: ../src/main-window.c:285
+msgid "_Create ISO image"
+msgstr "Als ISO-Datei"
+
+#: ../src/main-window.c:287
+msgid "_Quit"
+msgstr "_Beenden"
+
+#: ../src/main-window.c:287
+msgid "Exit authorg"
+msgstr "authorg verlassen"
+
+#. edit menu
+#: ../src/main-window.c:291
+msgid "Select _all"
+msgstr "_Alles auswählen"
+
+#: ../src/main-window.c:293
+msgid "_Preferences"
+msgstr "_Einstellungen"
+
+#: ../src/main-window.c:295
+msgid "_Remove video from list"
+msgstr "Video aus Liste entfernen"
+
+#: ../src/main-window.c:297
+msgid "_Edit chapters"
+msgstr "_Kapitel bearbeiten"
+
+#: ../src/util.c:33
+#, c-format
+msgid "%s does not exist."
+msgstr "%s existiert nicht."
+
+#: ../src/util.c:38
+msgid "Please select another directory or create this directory first"
+msgstr ""
+
+#: ../src/util.c:54
+#, c-format
+msgid "<b>%s is not a directory.</b>"
+msgstr ""
+
+#: ../src/util.c:75
+#, c-format
+msgid "%s is not empty."
+msgstr ""
+
+#: ../src/util.c:79
+msgid "Do you want to delete its content?"
+msgstr ""
+
+#: ../src/util.c:81
+msgid "_Ignore"
+msgstr ""
+
+#: ../src/util.c:143
+msgid "Please wait while creating DVD structure"
+msgstr ""
+
+#: ../src/util.c:187
+msgid "Creating the DVD ISO file"
+msgstr ""
+
+#: ../src/util.c:225
+#, c-format
+msgid "Execution of %s failed."
+msgstr ""
+
+#: ../src/util.c:229
+#, c-format
+msgid "%s"
+msgstr ""
+
+#: ../src/util.c:245
+#, c-format
+msgid "Remove %s?"
+msgstr ""
+
+#: ../src/spawn-dialog.c:79
+msgid "User canceled program execution"
+msgstr "Das Programm wurde vom Benutzer abgebrochen"
+
+#: ../src/spawn-dialog.c:142
+#, c-format
+msgid "Command failed with error %d"
+msgstr ""
+
+#: ../src/spawn-dialog.c:156
+#, c-format
+msgid "Program got terminated by external signal %d\n"
+msgstr "Das Programm wurde durch ein externes Signal %d beendet.\n"
+
+#: ../src/spawn-dialog.c:168
+msgid "Program died unexpected..."
+msgstr "Das Programm hat sich unerwartet beendet"
+
+#: ../libvideofile/video-file.c:196
+#, c-format
+msgid ""
+"<b>%s</b>\n"
+"<i>Length: %02d:%02d:%02d</i>"
+msgstr ""
+"<b>%s</b>\n"
+"<i>Länge: %02d:%02d:%02d</i>"

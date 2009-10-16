@@ -1,0 +1,17 @@
+src/authorg.c
+src/main-window.c
+src/authorg.c
+src/main-window.h
+src/util.c
+src/util.h
+src/spawn-dialog.c
+src/Makefile.am
+src/authorg.h
+src/spawn-dialog.h
+src/main-window.c
+libvideofile/video-store.c
+libvideofile/video-file.h
+libvideofile/video-file-mpeg.h
+libvideofile/video-file.c
+libvideofile/video-file-mpeg.c
+libvideofile/video-store.h

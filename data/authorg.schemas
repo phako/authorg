@@ -1,0 +1,17 @@
+<gconfschemafile>
+	<schemalist>
+		<schema>
+			<key>/schemas/apps/authorg/iso_dir</key>
+			<applyto>/apps/authorg/iso_dir</applyto>
+			<owner>authorg</owner>
+			<type>string</type>
+			<default>/tmp</default>
+			<locale name="C">
+				<short>Where to put temporary ISO structure</short>
+				<long>This is the directory where the DVD structure of the
+				ISO-file to be created should be written. As this is supposed
+				to hold the contents of a DVD, be sure it is large enough</long>
+			</locale>
+		</schema>
+	</schemalist>
+</gconfschemafile>
