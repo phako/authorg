@@ -19,4 +19,6 @@ authorg_SOURCES = \
 authorg_LDADD = $(GLIB_LIBS) \
 				$(GNOME_LIBS) \
 				$(GNOME_VFS_LIBS) \
-				../libvideofile/libvideofile.a -lavformat -lavcodec
+				../libvideofile/libvideofile.a \
+				$(AVFORMAT_LIBS) \
+				$(AVFORMAT_CFLAGS)

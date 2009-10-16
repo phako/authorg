@@ -22,8 +22,8 @@
 #include <glib.h>
 #include <glib/gi18n.h>
 
-#include <ffmpeg/avcodec.h>
-#include <ffmpeg/avformat.h>
+#include <libavcodec/avcodec.h>
+#include <libavformat/avformat.h>
 
 #include "video-file-mpeg.h"
 

@@ -11,4 +11,5 @@ libvideofile_a_SOURCES = \
 INCLUDES = $(GLIB_CFLAGS) \
 		   $(GNOME_CFLAGS) \
 		   $(GNOME_VFS_CFLAGS) \
-		   -I /opt/ffmpeg/include
+		   $(AVCODEC_CFLAGS) \
+		   $(AVFORMAT_CFLAGS)

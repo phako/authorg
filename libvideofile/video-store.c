@@ -596,6 +596,7 @@ void
 authorg_video_store_to_dvdauthor_fd (AuthorgVideoStore *store, gint fd)
 {
 	GString *dvdauthor;
+	int res;
 
 	dvdauthor = g_string_new ("<dvdauthor>");
 	g_string_append (dvdauthor, "<vmgm /><titleset><titles>");
@@ -605,7 +606,7 @@ authorg_video_store_to_dvdauthor_fd (AuthorgVideoStore *store, gint fd)
 
 	g_string_append (dvdauthor, "</titles></titleset></dvdauthor>");
 
-	write (fd, dvdauthor->str, dvdauthor->len);
+	res = write (fd, dvdauthor->str, dvdauthor->len);
 
 	g_string_free (dvdauthor, TRUE);
 }

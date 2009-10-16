@@ -20,8 +20,8 @@
 
 #include <config.h>
 
-#include <ffmpeg/avcodec.h>
-#include <ffmpeg/avformat.h>
+#include <libavcodec/avcodec.h>
+#include <libavformat/avformat.h>
 
 #include <glib/gerror.h>
 #include <glib/gi18n.h>
@@ -80,6 +80,7 @@ authorg_ffmpeg_util_quark ()
 GdkPixbuf *
 authorg_ffmpeg_grab_pixbuf (const gchar *filename, guint timecode, GError **error)
 {
+#if 0
 	int             i, videoStream;
 	AVFormatContext *pFormatCtx = NULL;
 	AVCodecContext  *pCodecCtx = NULL;
@@ -266,4 +267,6 @@ cleanup:
 	    av_close_input_file(pFormatCtx);
 	
 	return pixbuf;
+#endif
+	return NULL;
 }

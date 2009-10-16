@@ -52,6 +52,13 @@ AM_GCONF_SOURCE_2
 
 dnl *****************************************************************
 dnl check for ffmpeg
+PKG_CHECK_MODULES(AVCODEC, libavcodec >= 52.20)
+AC_SUBST(AVCODEC_LIBS)
+AC_SUBST(AVCODEC_CFLAGS)
+
+PKG_CHECK_MODULES(AVFORMAT, libavformat >= 52.31)
+AC_SUBST(AVFORMAT_LIBS)
+AC_SUBST(AVFORMAT_CFLAGS)
 
 dnl *****************************************************************
 dnl check for dvdauthor
