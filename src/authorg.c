@@ -23,10 +23,6 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
-#ifdef HAVE_GNOME
-#include <gnome.h>
-#endif
-
 #include "main-window.h"
 
 gboolean
@@ -39,41 +35,30 @@ authorg_main_quit()
 int
 main(int argc, char **argv)
 {
-#ifdef HAVE_GNOME
-	GnomeProgram *program;
-	GValue value;
-	poptContext optCon;
-	const gchar *file;
-#endif	
+	GOptionContext *ctx;
 	GtkWidget *main_window;
+	int i;
+	GError *error = NULL;
+
+	g_type_init ();
 
 	bindtextdomain (GETTEXT_PACKAGE, GNOMELOCALEDIR);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	textdomain (GETTEXT_PACKAGE);
 
-#ifdef HAVE_GNOME
-	program = gnome_program_init ("authorg", VERSION,
-			LIBGNOMEUI_MODULE, argc, argv,
-			GNOME_PARAM_APP_DATADIR, DATADIR,
-			GNOME_PARAM_NONE, NULL);
+	ctx = g_option_context_new ("FILES");
+	g_option_context_add_group (ctx, gtk_get_option_group (TRUE));
+	if (g_option_context_parse (ctx, &argc, &argv, &error) == FALSE)
+	{
+		g_warning ("Error parsing options: %s", error->message);
+	}
 
-	g_object_get_property (G_OBJECT (program),
-			GNOME_PARAM_POPT_CONTEXT,
-			g_value_init (&value, G_TYPE_POINTER));
-
-	optCon = g_value_get_pointer (&value);
-#else
-	gtk_init (&argc, &argv);
-#endif
 	main_window = authorg_main_window_new ();
 
-#ifdef HAVE_GNOME
-	/* open files on command line */
-	while ((file = poptGetArg (optCon)) != NULL)
+	for (i = 1; i < argc; i++)
 	{
-		authorg_main_window_append_file (AUTHORG_MAIN_WINDOW (main_window), file);
+		authorg_main_window_append_file (AUTHORG_MAIN_WINDOW (main_window), argv[i]);
 	}
-#endif
 	gtk_window_set_default_size (GTK_WINDOW (main_window), 400, 500);
 	g_signal_connect (G_OBJECT (main_window), "delete-event",
 			G_CALLBACK (authorg_main_quit), NULL);

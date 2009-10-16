@@ -4,8 +4,6 @@ bin_PROGRAMS = authorg
 DEFS=-DDATADIR=\"$(datadir)\"
 
 INCLUDES = $(GLIB_CFLAGS) \
-		   $(GNOME_CFLAGS) \
-		   $(GNOME_VFS_CFLAGS) \
 		   -I ../libvideofile
 
 authorg_SOURCES = \
@@ -17,8 +15,6 @@ authorg_SOURCES = \
 				  util.c util.h
 
 authorg_LDADD = $(GLIB_LIBS) \
-				$(GNOME_LIBS) \
-				$(GNOME_VFS_LIBS) \
 				../libvideofile/libvideofile.a \
 				$(AVFORMAT_LIBS) \
 				$(AVFORMAT_CFLAGS)

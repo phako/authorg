@@ -9,7 +9,5 @@ libvideofile_a_SOURCES = \
 		 video-store.c video-store.h
 
 INCLUDES = $(GLIB_CFLAGS) \
-		   $(GNOME_CFLAGS) \
-		   $(GNOME_VFS_CFLAGS) \
 		   $(AVCODEC_CFLAGS) \
 		   $(AVFORMAT_CFLAGS)

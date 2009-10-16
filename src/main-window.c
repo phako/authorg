@@ -28,11 +28,6 @@
 
 #include <gconf/gconf-client.h>
 
-#ifdef HAVE_GNOME_VFS
-#include <libgnomevfs/gnome-vfs-utils.h>
-#include <libgnomevfs/gnome-vfs-mime-utils.h>
-#endif
-
 #include <video-file.h>
 #include <video-file-mpeg.h>
 #include <video-store.h>
@@ -264,28 +259,37 @@ authorg_main_window_cb_remove_video (GtkMenuItem *item, AuthorgMainWindow *windo
 static gboolean
 _add_files_to_store (const gchar *filename, AuthorgVideoStore *store)
 {
-	gchar *mime = NULL;
 	AuthorgVideoFile *file = NULL;
+	GFile *f;
+	GFileInfo *info;
+	GError *error = NULL;
 
-#ifdef HAVE_GNOME_VFS
-	mime = gnome_vfs_get_mime_type (filename);
-#else
-	if (g_str_has_suffix (filename, ".mpg") || g_str_has_suffix (filename, ".mpeg"))
-		mime = g_strdup ("video/mpeg");
-	else
-		mime = g_strdup ("unknown");
-#endif
+	f = g_file_new_for_commandline_arg (filename);
+	info = g_file_query_info (f,
+			G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
+			G_FILE_QUERY_INFO_NONE,
+			NULL,
+			&error);
+	if (error != NULL)
+	{
+		g_warning ("Could not get file info for %s: %s",
+				   filename, error->message);
+		g_error_free (error);
+		g_object_unref (f);
+		return TRUE;
+	}
 
 	/* for now, only add mpeg files */
-	if (g_ascii_strcasecmp ("video/mpeg", mime) == 0)
+	if (g_ascii_strcasecmp ("video/mpeg", g_file_info_get_content_type (info)) == 0)
 	{
 		file = authorg_video_file_mpeg_new (filename);
-		g_free (mime);
 	}
 
 	if (file != NULL)
 		authorg_video_store_append (store, file);
 	
+	g_object_unref (f);
+	g_object_unref (info);
 	return TRUE;
 }
 
@@ -574,11 +578,12 @@ authorg_main_window_drag_data_received (GtkWidget *wgt, GdkDragContext *context,
                         GtkSelectionData *seldata, guint info, guint time,
                         gpointer userdata)
 {
-	gchar **uris = NULL, 
-		  *unescaped_uri = NULL,
-		  *mime = NULL;
+	gchar **uris = NULL;
 	gint i;
 	AuthorgVideoStore *store = AUTHORG_MAIN_WINDOW (userdata)->store;
+	GFile *file = NULL;
+	GError *error = NULL;
+	GFileInfo *file_info = NULL;
 
 	uris = g_strsplit ((gchar *)seldata->data, "\r\n", -1);
 
@@ -586,26 +591,30 @@ authorg_main_window_drag_data_received (GtkWidget *wgt, GdkDragContext *context,
 	{
 		if (!g_str_has_prefix (uris[i], "file://"))
 			continue;
+		file = g_file_new_for_uri (uris[i]);
+		file_info = g_file_query_info (file,
+			G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
+			G_FILE_QUERY_INFO_NONE,
+			NULL,
+			&error);
 
-#ifdef HAVE_GNOME_VFS
-		mime = gnome_vfs_get_mime_type (uris[i]);
-		unescaped_uri = gnome_vfs_get_local_path_from_uri (uris[i]);
-#else
-		if (g_str_has_suffix (uris[i], ".mpg") || 
-				g_str_has_suffix (uris[i], ".mpeg"))
-			mime = g_strdup ("video/mpeg");
-		else
-			mime = g_strdup ("unknown");
-		unescaped_uri = g_strdup ((uris[i])+7);
-#endif
+		if (error != NULL)
+		{
+			g_warning ("Could not get file info for %s: %s",
+					   g_file_get_path (file), error->message);
+			g_error_free (error);
+			g_object_unref (file);
+			continue;
+		}
 
-		if (g_ascii_strcasecmp ("video/mpeg", mime) == 0)
+		if (g_ascii_strcasecmp ("video/mpeg", g_file_info_get_content_type (file_info)) == 0)
 		{
 			authorg_video_store_append (store,
-					authorg_video_file_mpeg_new (unescaped_uri));
+					authorg_video_file_mpeg_new (g_file_get_path (file)));
 		}
-		g_free (mime);
-		g_free (unescaped_uri);
+
+		g_object_unref (file);
+		g_object_unref (file_info);
 	}
 	if (!authorg_video_store_is_empty (store))
 		gtk_action_group_set_sensitive (AUTHORG_MAIN_WINDOW(userdata)->nonempty_action_group, TRUE);
