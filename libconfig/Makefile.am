@@ -6,5 +6,5 @@ libconfig_a_SOURCES = \
 			tools-page.c tools-page.h \
 			settings-page.c settings-page.h
 
-INCLUDES = $(GLIB_CFLAGS) \
+AM_CPPFLAGS = $(GLIB_CFLAGS) \
 		   -I ../libvideofile

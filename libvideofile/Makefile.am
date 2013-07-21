@@ -8,6 +8,6 @@ libvideofile_a_SOURCES = \
 		 video-file-mpeg.c video-file-mpeg.h \
 		 video-store.c video-store.h
 
-INCLUDES = $(GLIB_CFLAGS) \
+AM_CPPFLAGS = $(GLIB_CFLAGS) \
 		   $(AVCODEC_CFLAGS) \
 		   $(AVFORMAT_CFLAGS)

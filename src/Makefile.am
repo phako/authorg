@@ -3,7 +3,7 @@ bin_PROGRAMS = authorg
 
 DEFS=-DDATADIR=\"$(datadir)\"
 
-INCLUDES = $(GLIB_CFLAGS) \
+AM_CPPFLAGS = $(GLIB_CFLAGS) \
 		   -I ../libvideofile
 
 authorg_SOURCES = \
