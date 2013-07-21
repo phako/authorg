@@ -23,14 +23,7 @@
 #include <glib-object.h>
 #include <glib/gi18n.h>
 
-#include <gtk/gtkbin.h>
-#include <gtk/gtkbox.h>
-#include <gtk/gtkdialog.h>
-#include <gtk/gtkhbox.h>
-#include <gtk/gtklabel.h>
-#include <gtk/gtkspinbutton.h>
-#include <gtk/gtkstock.h>
-#include <gtk/gtkvbox.h>
+#include <gtk/gtk.h>
 
 #include "chapter-editor.h"
 
@@ -75,7 +68,6 @@ authorg_chapter_editor_new ()
 
 	editor = AUTHORG_CHAPTER_EDITOR (g_object_new (AUTHORG_TYPE_CHAPTER_EDITOR, NULL));
 
-	gtk_dialog_set_has_separator (GTK_DIALOG (editor), FALSE);
 	gtk_dialog_add_button (GTK_DIALOG (editor),
 					GTK_STOCK_OK, GTK_RESPONSE_OK);
 
@@ -85,7 +77,7 @@ authorg_chapter_editor_new ()
 	gtk_box_set_spacing (GTK_BOX (vbox), 2);
 	gtk_container_set_border_width (GTK_CONTAINER (vbox), 6);
 
-	hbox = gtk_hbox_new (FALSE, 12);
+	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
 	gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
 	gtk_widget_show (hbox);
 

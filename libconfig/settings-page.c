@@ -22,7 +22,7 @@
 #include <glib/gi18n.h>
 #include <glib-object.h>
 
-#include <gtk/gtkentry.h>
+#include <gtk/gtk.h>
 
 #include <gconf/gconf-client.h>
 

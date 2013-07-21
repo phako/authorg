@@ -585,7 +585,7 @@ authorg_main_window_drag_data_received (GtkWidget *wgt, GdkDragContext *context,
 	GError *error = NULL;
 	GFileInfo *file_info = NULL;
 
-	uris = g_strsplit ((gchar *)seldata->data, "\r\n", -1);
+	uris = g_strsplit ((char *)gtk_selection_data_get_data (seldata), "\r\n", -1);
 
 	for (i = 0; uris[i] != NULL; i++)
 	{
@@ -656,7 +656,7 @@ authorg_main_window_new ()
 	GClosure *closure;
 
     main_window = AUTHORG_MAIN_WINDOW (g_object_new (AUTHORG_TYPE_MAIN_WINDOW, NULL));
-    vbox = gtk_vbox_new (0, FALSE);
+    vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 	gtk_widget_show (vbox);
 
     gtk_container_add (GTK_CONTAINER (main_window), vbox);
@@ -691,7 +691,7 @@ authorg_main_window_new ()
 	/* own accel group */
 	accel_group = gtk_accel_group_new ();
 	closure = g_cclosure_new (G_CALLBACK (authorg_main_window_cb_remove_video), main_window, NULL);
-	gtk_accel_group_connect (accel_group, GDK_Delete, 0, GTK_ACCEL_VISIBLE, closure); 
+	gtk_accel_group_connect (accel_group, GDK_KEY_Delete, 0, GTK_ACCEL_VISIBLE, closure);
 
 	gtk_window_add_accel_group (GTK_WINDOW (main_window), accel_group);
 	
@@ -702,7 +702,7 @@ authorg_main_window_new ()
     gtk_box_pack_start (GTK_BOX (vbox),
 			gtk_ui_manager_get_widget (main_window->ui_manager, "/Toolbar"), FALSE, FALSE, 0);
 
-    hbox = gtk_hbox_new (0, TRUE);
+    hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
     gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
 	gtk_widget_show (hbox);
     

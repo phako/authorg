@@ -19,13 +19,13 @@
 #ifndef _SETTINGS_PAGE_H
 #define _SETTINGS_PAGE_H
 
-#include <gtk/gtkvbox.h>
+#include <gtk/gtk.h>
 
 #define AUTHORG_TYPE_SETTINGS_PAGE (authorg_settings_page_get_type())
-#define AUTHORG_SETTINGS_PAGE(obj) (GTK_CHECK_CAST ((obj), AUTHORG_TYPE_SETTINGS_PAGE, AuthorgSettingsPage))
-#define AUTHORG_SETTINGS_PAGE_CLASS(klass) (GTK_CHECK_CLASS_CAST ((klass), AUTHORG_TYPE_SETTINGS_PAGE, AuthorgSettingsPageClass))
-#define AUTHORG_IS_SETTINGS_PAGE(obj) (GTK_CHECK_TYPE ((obj), AUTHORG_TYPE_SETTINGS_PAGE))
-#define AUTHORG_IS_SETTINGS_PAGE_CLASS(klass) (GTK_CHECK_CLASS_TYPE ((obj), AUTHORG_TYPE_SETTINGS_PAGE))
+#define AUTHORG_SETTINGS_PAGE(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), AUTHORG_TYPE_SETTINGS_PAGE, AuthorgSettingsPage))
+#define AUTHORG_SETTINGS_PAGE_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), AUTHORG_TYPE_SETTINGS_PAGE, AuthorgSettingsPageClass))
+#define AUTHORG_IS_SETTINGS_PAGE(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), AUTHORG_TYPE_SETTINGS_PAGE))
+#define AUTHORG_IS_SETTINGS_PAGE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((obj), AUTHORG_TYPE_SETTINGS_PAGE))
 
 typedef struct AuthorgSettingsPage AuthorgSettingsPage;
 typedef struct AuthorgSettingsPageClass AuthorgSettingsPageClass;
@@ -40,7 +40,7 @@ struct AuthorgSettingsPageClass {
 		GtkVBoxClass parent;
 };
 
-GtkType authorg_settings_page_get_type (void);
+GType authorg_settings_page_get_type (void);
 /*GtkWidget *authorg_settings_page_new (void); */
 void authorg_settings_page_construct (AuthorgSettingsPage *page, const gchar *gconf_key);
 #endif /* _SETTINGS_PAGE_H */

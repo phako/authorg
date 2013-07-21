@@ -21,10 +21,10 @@
 #define _SPAWN_DIALOG_H
 
 #define AUTHORG_TYPE_SPAWN_DIALOG (authorg_spawn_dialog_get_type())
-#define AUTHORG_SPAWN_DIALOG(obj) (GTK_CHECK_CAST ((obj), AUTHORG_TYPE_SPAWN_DIALOG, AuthorgSpawnDialog))
-#define AUTHORG_SPAWN_DIALOG_CLASS(klass) (GTK_CHECK_CLASS_CAST ((klass), AUTHORG_TYPE_SPAWN_DIALOG, AuthorgSpawnDialogClass))
-#define AUTHORG_IS_SPAWN_DIALOG(obj) (GTK_CHECK_TYPE ((obj), AUTHORG_TYPE_SPAWN_DIALOG))
-#define AUTHORG_IS_SPAWN_DIALOG_CLASS(klass) (GTK_CHECK_CLASS_TYPE ((obj), AUTHORG_TYPE_SPAWN_DIALOG))
+#define AUTHORG_SPAWN_DIALOG(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), AUTHORG_TYPE_SPAWN_DIALOG, AuthorgSpawnDialog))
+#define AUTHORG_SPAWN_DIALOG_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), AUTHORG_TYPE_SPAWN_DIALOG, AuthorgSpawnDialogClass))
+#define AUTHORG_IS_SPAWN_DIALOG(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), AUTHORG_TYPE_SPAWN_DIALOG))
+#define AUTHORG_IS_SPAWN_DIALOG_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((obj), AUTHORG_TYPE_SPAWN_DIALOG))
 
 typedef struct AuthorgSpawnDialog AuthorgSpawnDialog;
 typedef struct AuthorgSpawnDialogClass AuthorgSpawnDialogClass;
@@ -68,7 +68,7 @@ enum AuthorgSpawnErrors {
 	AUTHORG_SPAWN_DIALOG_ERROR_DIED_UNEXPECTED,
 };
 
-GtkType authorg_spawn_dialog_get_type (void);
+GType authorg_spawn_dialog_get_type (void);
 GtkWidget *authorg_spawn_dialog_new (void);
 void authorg_spawn_dialog_set_info (AuthorgSpawnDialog *dialog, const gchar *info);
 gboolean authorg_spawn_dialog_run_command_line (AuthorgSpawnDialog *dialog, const gchar *command_line, GError **error);

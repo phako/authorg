@@ -29,10 +29,10 @@
 
 G_BEGIN_DECLS
 #define AUTHORG_TYPE_MAIN_WINDOW (authorg_main_window_get_type())
-#define AUTHORG_MAIN_WINDOW(obj) (GTK_CHECK_CAST ((obj), AUTHORG_TYPE_MAIN_WINDOW, AuthorgMainWindow))
-#define AUTHORG_MAIN_WINDOW_CLASS(klass) (GTK_CHECK_CLASS_CAST ((klass), AUTHORG_TYPE_MAIN_WINDOW, AuthorgMainWindowClass))
-#define AUTHORG_IS_MAIN_WINDOW(obj) (GTK_CHECK_TYPE ((obj), AUTHORG_TYPE_MAIN_WINDOW))
-#define AUTHORG_IS_MAIN_WINDOW_CLASS(klass) (GTK_CHECK_CLASS_TYPE ((obj), AUTHORG_TYPE_MAIN_WINDOW))
+#define AUTHORG_MAIN_WINDOW(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), AUTHORG_TYPE_MAIN_WINDOW, AuthorgMainWindow))
+#define AUTHORG_MAIN_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), AUTHORG_TYPE_MAIN_WINDOW, AuthorgMainWindowClass))
+#define AUTHORG_IS_MAIN_WINDOW(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), AUTHORG_TYPE_MAIN_WINDOW))
+#define AUTHORG_IS_MAIN_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((obj), AUTHORG_TYPE_MAIN_WINDOW))
 
 typedef struct AuthorgMainWindow AuthorgMainWindow;
 typedef struct AuthorgMainWindowClass AuthorgMainWindowClass;
@@ -55,7 +55,7 @@ struct AuthorgMainWindowClass {
 		GtkWindowClass parent;
 };
 
-GtkType authorg_main_window_get_type (void);
+GType authorg_main_window_get_type (void);
 GtkWidget *authorg_main_window_new (void);
 void authorg_main_window_append_file (AuthorgMainWindow *window, const gchar *file);
 

@@ -23,21 +23,9 @@
 #include <sys/wait.h>
 
 #include <glib/gi18n.h>
-#include <glib/gmain.h>
-#include <glib/gquark.h>
-#include <glib/gerror.h>
+#include <glib.h>
 
-#include <gtk/gtkbox.h>
-#include <gtk/gtkdialog.h>
-#include <gtk/gtkexpander.h>
-#include <gtk/gtklabel.h>
-#include <gtk/gtkprogressbar.h>
-#include <gtk/gtkscrolledwindow.h>
-#include <gtk/gtkstock.h>
-#include <gtk/gtktextview.h>
-#include <gtk/gtkvbox.h>
-#include <gtk/gtkwidget.h>
-#include <gtk/gtkmain.h>
+#include <gtk/gtk.h>
 
 #include <pango/pango.h>
 
@@ -65,7 +53,6 @@ authorg_spawn_dialog_init (AuthorgSpawnDialog *dialog)
 	GtkTextIter iter;
 	PangoFontDescription *desc;
 
-	gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
 	gtk_widget_set_size_request (GTK_WIDGET (dialog), 220, -1);
 	gtk_container_set_border_width (GTK_CONTAINER (dialog), 6);
 	gtk_dialog_add_button (GTK_DIALOG (dialog),

@@ -4,8 +4,7 @@
 
 #include <gdk-pixbuf/gdk-pixbuf.h>
 
-#include <gtk/gtkaboutdialog.h>
-#include <gtk/gtkwidget.h>
+#include <gtk/gtk.h>
 
 #include "about.h"
 

@@ -29,7 +29,7 @@ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE",
                                    [definition of GETTEXT_PACKAGE])
 AM_GLIB_DEFINE_LOCALEDIR(GNOMELOCALEDIR)
 
-PKG_CHECK_MODULES(GLIB, glib-2.0 >= 2.6.0 gtk+-2.0 >= 2.6.0 gio-2.0 >= 2.20 gconf-2.0)
+PKG_CHECK_MODULES(GLIB, glib-2.0 >= 2.6.0 gtk+-3.0 >= 3.0 gio-2.0 >= 2.20 gconf-2.0)
 AC_SUBST(GLIB_CFLAGS)
 AC_SUBST(GLIB_LIBS)
 

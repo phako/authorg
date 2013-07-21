@@ -28,7 +28,7 @@
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
 
-#include <gdk/gdkpixbuf.h>
+#include <gdk/gdk.h>
 
 
 #include "video-file.h"

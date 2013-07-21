@@ -25,8 +25,7 @@
 #include <glib-object.h>
 #include <glib/gstdio.h>
 
-#include <gtk/gtktreemodel.h>
-#include <gtk/gtktreednd.h>
+#include <gtk/gtk.h>
 
 #include "video-file.h"
 #include "video-store.h"

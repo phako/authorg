@@ -23,7 +23,7 @@
 
 #include <glib-object.h>
 #include <glib.h>
-#include <gdk/gdkpixbuf.h>
+#include <gdk/gdk.h>
 
 #define AUTHORG_TYPE_VIDEO_FILE (authorg_video_file_get_type())
 #define AUTHORG_VIDEO_FILE(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), AUTHORG_TYPE_VIDEO_FILE, AuthorgVideoFile))
