@@ -1,20 +1,22 @@
-AC_INIT([authorg], [0.1])
+AC_INIT([authorg],[0.1])
 AC_CONFIG_SRCDIR(src/authorg.c)
-AC_CANONICAL_SYSTEM
+AC_CANONICAL_TARGET
 
 AM_INIT_AUTOMAKE
 AM_CONFIG_HEADER(config.h)
 
 AM_MAINTAINER_MODE
 
-AC_PROG_INTLTOOL([0.21])
+IT_PROG_INTLTOOL([0.21])
 AC_PROG_AWK
 AC_PROG_LN_S
 AC_PROG_CC
-AC_ISC_POSIX
+AC_SEARCH_LIBS([strerror],[cposix])
 AC_PROG_INSTALL
 AC_PROG_MAKE_SET
 AC_PROG_RANLIB
+
+AM_SILENT_RULES([yes])
 
 GNOME_COMPILE_WARNINGS
 
@@ -36,8 +38,7 @@ GTK_DOC_CHECK(1.0)
 dnl *****************************************************************
 dnl gconf stuff
 AC_ARG_ENABLE(schemas-install,
-			  AC_HELP_STRING([--disable-schemas-install],
-							 [Disbale installation of gconf schemas]))
+			  AS_HELP_STRING([--disable-schemas-install],[Disbale installation of gconf schemas]))
 
 AM_CONDITIONAL(SCHEMAS_INSTALL, test "x$enable_schemas_install" != "xno")
 
