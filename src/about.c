@@ -30,6 +30,7 @@ authorg_about(GtkWidget *parent)
 			"comments", _("Simple DVD authoring program"),
 			"authors", authors,
 			"logo", logo,
+			"license-type", GTK_LICENSE_GPL_2_0,
 			NULL);
 
 	g_object_unref (logo);
