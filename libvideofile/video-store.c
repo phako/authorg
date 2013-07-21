@@ -607,6 +607,9 @@ authorg_video_store_to_dvdauthor_fd (AuthorgVideoStore *store, gint fd)
 	g_string_append (dvdauthor, "</titles></titleset></dvdauthor>");
 
 	res = write (fd, dvdauthor->str, dvdauthor->len);
+	if (res != 0) {
+		g_warning ("Failed to write to file");
+	}
 
 	g_string_free (dvdauthor, TRUE);
 }

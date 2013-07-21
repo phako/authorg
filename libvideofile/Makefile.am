@@ -1,4 +1,4 @@
-AM_CFLAGS = -Wall -Werror
+AM_CFLAGS = -Wall -Werror -Wno-deprecated-declarations
 
 noinst_LIBRARIES = libvideofile.a
 
