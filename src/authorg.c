@@ -40,7 +40,9 @@ main(int argc, char **argv)
 	int i;
 	GError *error = NULL;
 
+#if !GLIB_CHECK_VERSION(2,36,0)
 	g_type_init ();
+#endif
 
 	bindtextdomain (GETTEXT_PACKAGE, GNOMELOCALEDIR);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");

@@ -23,7 +23,7 @@
 #include <libavcodec/avcodec.h>
 #include <libavformat/avformat.h>
 
-#include <glib/gerror.h>
+#include <glib.h>
 #include <glib/gi18n.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 
@@ -41,7 +41,7 @@ authorg_ffmpeg_util_error_to_string (gint error)
 {
 	switch (error)
 	{
-		case AVERROR_IO:
+/*		case AVERROR_IO:
 			return g_strdup (_("I/O error"));
 		case AVERROR_NUMEXPECTED:
 			return g_strdup (_("Number syntax expected in filename"));
@@ -53,7 +53,7 @@ authorg_ffmpeg_util_error_to_string (gint error)
 			return g_strdup (_("Unknown format"));
 		case AVERROR_NOTSUPP:
 			return g_strdup (_("Operation not supported"));
-
+*/
 		default:
 			return g_strdup (_("Unknown error"));
 	}
