@@ -28,7 +28,7 @@ my $header =
  *  Copyright (C) 2005 Jens Georg <mail\@jensge.org>
  *
  *  This program is free software; you can redistribute it and/or modify
- *  it under the terms of version 2 of the GNU General Public License as 
+ *  it under the terms of version 2 of the GNU General Public License as
  *  published by the Free Software Foundation.
  *
  *  This program is distributed in the hope that it will be useful,
@@ -89,7 +89,7 @@ $header=
  *  Copyright (C) 2005 Jens Georg <mail\@jensge.org>
  *
  *  This program is free software; you can redistribute it and/or modify
- *  it under the terms of version 2 of the GNU General Public License as 
+ *  it under the terms of version 2 of the GNU General Public License as
  *  published by the Free Software Foundation.
  *
  *  This program is distributed in the hope that it will be useful,
@@ -104,7 +104,7 @@ $header=
 
 #include <glib.h>
 #include <glib-object.h>
- 
+
 #include \"$filename.h\"
 
 struct Authorg&camelPrivate
@@ -131,7 +131,7 @@ authorg_&small_finalize (GObject *object)
 		g_free (&small->_priv);
 		&small->_priv = NULL;
 	}
-	
+
 	if (G_OBJECT_CLASS (authorg_&small_parent_class)->finalize)
 		G_OBJECT_CLASS (authorg_&small_parent_class)->finalize (object);
 }

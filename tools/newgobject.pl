@@ -134,5 +134,3 @@ $header =~ s/&small/$small/g;
 open (HEADER, ">$filename.c");
 print HEADER $header;
 close (HEADER);
-
-
