@@ -1,4 +1,4 @@
-AM_CFLAGS = -Wall -Werror
+AM_CFLAGS = -Wall
 bin_PROGRAMS = authorg
 
 DEFS=-DDATADIR=\"$(datadir)\"
