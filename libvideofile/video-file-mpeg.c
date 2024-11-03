@@ -34,15 +34,14 @@ authorg_video_file_mpeg_info (AuthorgVideoFile *file)
 {
 	AVFormatContext *pFormatCtx;
 	
-	av_register_all();
-	av_open_input_file (&pFormatCtx, file->filename,
-			NULL, 0, NULL);
+	avformat_open_input (&pFormatCtx, file->filename,
+			NULL, NULL);
 
-	av_find_stream_info (pFormatCtx);
+	avformat_find_stream_info (pFormatCtx, NULL);
 
 	file->length = pFormatCtx->duration / AV_TIME_BASE;
 
-	av_close_input_file (pFormatCtx);
+	avformat_close_input (&pFormatCtx);
 
 	/* chain up */
 	AUTHORG_VIDEO_FILE_CLASS (authorg_video_file_mpeg_parent_class)->info (file);
