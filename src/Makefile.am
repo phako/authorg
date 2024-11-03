@@ -1,4 +1,4 @@
-AM_CFLAGS = -Wall
+AM_CFLAGS = -Wall -Wno-error=deprecated-declarations
 bin_PROGRAMS = authorg
 
 DEFS=-DDATADIR=\"$(datadir)\"

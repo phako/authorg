@@ -1,4 +1,4 @@
-AM_CFLAGS = -Wall -Werror
+AM_CFLAGS = -Wall -Wno-error=deprecated-declarations
 
 noinst_LIBRARIES = libconfig.a
 
